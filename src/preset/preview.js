@@ -8,7 +8,16 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators#gatsby-focus-wrapper
  */
-import { withGlobals } from "../withGlobals";
-import { withRoundTrip } from "../withRoundTrip";
+import addons, { makeDecorator } from "@storybook/addons";
 
-export const decorators = [withGlobals, withRoundTrip];
+export const decorators = [
+  makeDecorator({
+    name: "withCodePreview",
+    parameterName: "code-preview",
+    wrapper: (getStory, context) => {
+      const channel = addons.getChannel();
+      channel.emit("code-preview/selectedStory", context.parameters.fileName);
+      return getStory(context);
+    },
+  }),
+];
