@@ -4,6 +4,7 @@ module.exports = function sourceLoader(source) {
   const opts = this.query || {};
   const { root = "", compiled } = opts;
   const path = this.resourcePath;
+  console.log(`root`, root, path);
   if (!root || path.includes(root)) {
     cache.register(
       path.substr(root.length).replace(/^\//, ""),

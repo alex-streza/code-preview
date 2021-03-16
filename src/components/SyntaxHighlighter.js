@@ -25,7 +25,7 @@ const HighlighterInner = (props) => {
       <div className="source-code" onClick={handleLinkClick}>
         <SyntaxHighlighter
           style={prism}
-          customStyle={{ backgroundColor: "transparent", fontSize: "0.8em" }}
+          customStyle={{ backgroundColor: "transparent", fontSize: "1em" }}
           language={language}
           renderer={({ rows, stylesheet, useInlineStyles }) => {
             return rows.map((row, i) => {

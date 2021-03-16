@@ -8,7 +8,6 @@ const Panel = (props) => {
   const [fileState, setFileState] = useState({ history: [], idx: 0 });
   const filePath = fileState.history[fileState.idx] || "";
   const [rawSources, setRawSources] = useState(rawSourcesFromProps);
-  const [showCompiled, setShowCompiled] = useState(false);
 
   const handleFileChange = (path, rs) => {
     if (rs) {
@@ -30,7 +29,18 @@ const Panel = (props) => {
 
   const handleLinkClick = (p) => {
     const rel = path.join(filePath.replace(/\/[^/]*$/, "/"), p);
-    const found = ["/index.jsx", "/index.js", ".jsx", ".js", ".css", ""]
+    const found = [
+      "/index.jsx",
+      "/index.js",
+      "/index.tsx",
+      "/index.ts",
+      ".jsx",
+      ".js",
+      ".css",
+      ".tsx",
+      ".ts",
+      "",
+    ]
       .map((suff) => rel + suff)
       .find((p) => !!rawSources[p]);
     if (found) {
@@ -39,8 +49,6 @@ const Panel = (props) => {
       console.warn("WARNING - could not find corresponding file in list", rel);
     }
   };
-
-  const handleToggleCompiled = () => setShowCompiled(!showCompiled);
 
   useEffect(() => {
     channel.on("code-preview/rawSources", (newRawSources) => {
@@ -74,17 +82,11 @@ const Panel = (props) => {
         fileState={fileState}
         setFileState={setFileState}
         files={files}
-        handleToggleCompiled={handleToggleCompiled}
         handleFileChange={(i) => handleFileChange(i, rawSources)}
-        showCompiled={showCompiled}
       />
       <SyntaxHighlighter
-        language={
-          !showCompiled && filePath.match(/.css$/) ? "css" : "javascript"
-        }
-        code={
-          (rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"] || ""
-        }
+        language={filePath.match(/.css$/) ? "css" : "javascript"}
+        code={(rawSources[filePath] || {})["raw"] || ""}
         onLinkClick={handleLinkClick}
       />
     </div>

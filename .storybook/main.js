@@ -8,11 +8,11 @@ module.exports = {
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
-      test: /\.jsx?$|\.css$/,
+      test: /\.jsx?$|\.tsx?$|\.css$/,
       use: [
         {
           loader: path.resolve(__dirname, "utils/sourceLoader.js"),
-          options: { root: path.resolve(__dirname, "../stories") },
+          options: { root: path.resolve(__dirname, "../components") },
         },
       ],
     });
@@ -21,6 +21,8 @@ module.exports = {
     config.mode = "development";
     // prevent minification
     config.optimization.minimizer = [];
+    // hide warnings
+    config.stats = { warnings: false };
     // Return the altered config
     return config;
   },

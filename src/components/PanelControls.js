@@ -1,45 +1,63 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { styled, themes, convert } from "@storybook/theming";
-
-import {
-  MenuItem,
-  Icon,
-  ControlGroup,
-  Button as BButton,
-} from "@blueprintjs/core";
-import { Select } from "@blueprintjs/select";
+import Select from "react-select";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Container = styled.div({
   display: "flex",
   padding: "8px",
 });
 
+const ContainerVertical = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  padding: "8px",
+});
+
+const ContainerSelect = styled.div({
+  width: "300px",
+  marginRight: "12px",
+});
+
 const Button = styled.button({
-  height: "32px",
   color: "white",
-  backgroundColor: `${convert(themes.light).color.primary}`,
-  borderRadius: "8px",
+  backgroundColor: `${convert(themes.normal).color.primary}`,
+  borderRadius: "60px",
   border: "none",
   marginRight: "12px",
-  padding: "4px",
+  padding: "8px 12px",
+  fontSize: `${convert(themes.normal).typography.size.s3}px`,
+  fontFamily: `${convert(themes.normal).typography.fonts.base}`,
   "&:hover": {
-    background: convert(themes.light).background.hoverable,
+    cursor: "pointer",
+    filter: "brightness(115%)",
   },
 });
 
-console.log(`themes.light`, themes.light);
-const PanelControls = (props) => {
-  const {
-    filePath,
-    fileState,
-    setFileState,
-    files,
-    handleToggleCompiled,
-    handleFileChange,
-    showCompiled,
-  } = props;
+const reactSelectTheme = (theme) => ({
+  ...theme,
+  colors: {
+    ...theme.colors,
+    primary25: convert(themes.normal).color.primary,
+    primary: convert(themes.normal).color.primary,
+    primary50: convert(themes.normal).color.primary,
+  },
+});
 
-  const [query, setQuery] = useState("");
+const selectStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    padding: 12,
+    color: state.isSelected ? "#ffffff" : provided.color,
+    fontFamily: `${convert(themes.normal).typography.fonts.base}`,
+    "&:hover": {
+      color: "#ffffff",
+    },
+  }),
+};
+
+const PanelControls = (props) => {
+  const { filePath, fileState, setFileState, files, handleFileChange } = props;
 
   const handleBack = () =>
     setFileState({
@@ -52,63 +70,36 @@ const PanelControls = (props) => {
       idx: Math.min(fileState.idx + 1, fileState.history.length - 1),
     });
 
-  const renderItem = useCallback(
-    (option, { modifiers, handleClick }) => {
-      const currentlySelected = filePath === option;
-      return (
-        <MenuItem
-          key={option}
-          icon={
-            <Icon icon={currentlySelected ? "tick" : "blank"} iconSize={10} />
-          }
-          active={modifiers.active}
-          text={option}
-          shouldDismissPopover={false}
-          onClick={handleClick}
-        />
-      );
-    },
-    [filePath]
-  );
-
   return (
-    <ControlGroup>
+    <ContainerVertical>
       <Container>
+        <ContainerSelect>
+          <Select
+            onChange={({ value }) => {
+              handleFileChange(value);
+            }}
+            styles={selectStyles}
+            theme={reactSelectTheme}
+            value={{ value: filePath, label: filePath }}
+            options={files.map((file) => ({ value: file, label: file }))}
+          />
+        </ContainerSelect>
         <Button
           disabled={fileState.idx === 0}
           icon="step-backward"
           onClick={handleBack}
         >
-          Back
+          <AiOutlineArrowLeft />
         </Button>
         <Button
           disabled={fileState.idx === fileState.history.length - 1}
           icon="step-forward"
           onClick={handleForward}
         >
-          Next
+          <AiOutlineArrowRight />
         </Button>
-        <Select
-          items={files.filter((option) =>
-            option.toLowerCase().includes(query.toLowerCase())
-          )}
-          itemRenderer={renderItem}
-          onItemSelect={handleFileChange}
-          popoverProps={{ minimal: true }}
-          onQueryChange={setQuery}
-        >
-          <BButton
-            text={filePath || "Select a file"}
-            rightIcon="double-caret-vertical"
-          />
-        </Select>
-        {/* <Button
-          active={showCompiled}
-          text="Compiled"
-          onClick={handleToggleCompiled}
-        /> */}
       </Container>
-    </ControlGroup>
+    </ContainerVertical>
   );
 };
 
