@@ -2,15 +2,17 @@ const cache = require("./cache");
 
 module.exports = function sourceLoader(source) {
   const opts = this.query || {};
-  const { root = "", compiled } = opts;
+  const { roots = [], compiled } = opts;
   const path = this.resourcePath;
-  console.log(`root`, root, path);
-  if (!root || path.includes(root)) {
-    cache.register(
-      path.substr(root.length).replace(/^\//, ""),
-      source,
-      compiled
-    );
+  for (const root of roots) {
+    if (!root || path.includes(root)) {
+      console.log(`path`, path);
+      cache.register(
+        path.substr(root.length).replace(/^\//, ""),
+        source,
+        compiled
+      );
+    }
   }
   return path.match(".test.") && compiled ? "" : source;
 };

@@ -3,8 +3,8 @@ const CodePlugin = require("./utils/CodePlugin");
 
 module.exports = {
   stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    "../components/**/*.stories.mdx",
+    "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
@@ -12,7 +12,7 @@ module.exports = {
       use: [
         {
           loader: path.resolve(__dirname, "utils/sourceLoader.js"),
-          options: { root: path.resolve(__dirname, "../components") },
+          options: { roots: [path.resolve(__dirname, "../components/")] },
         },
       ],
     });
