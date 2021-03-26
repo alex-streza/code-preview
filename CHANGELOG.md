@@ -1,3 +1,16 @@
+# v0.0.4 (Fri Mar 26 2021)
+
+#### ⚠️ Pushed to `master`
+
+- add logs for webpack loaded files ([@alex-streza](https://github.com/alex-streza))
+- 0.0.4-alpha.0 ([@alex-streza](https://github.com/alex-streza))
+
+#### Authors: 1
+
+- [@alex-streza](https://github.com/alex-streza)
+
+---
+
 # v0.0.3 (Fri Mar 26 2021)
 
 #### ⚠️ Pushed to `master`
