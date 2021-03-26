@@ -1,3 +1,16 @@
+# v0.0.2 (Fri Mar 26 2021)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of https://github.com/alex-streza/code-preview ([@alex-streza](https://github.com/alex-streza))
+- update dependencies ([@alex-streza](https://github.com/alex-streza))
+
+#### Authors: 1
+
+- [@alex-streza](https://github.com/alex-streza)
+
+---
+
 # v0.0.1 (Fri Mar 26 2021)
 
 #### ⚠️ Pushed to `master`
