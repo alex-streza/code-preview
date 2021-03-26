@@ -1,5 +1,5 @@
 const path = require("path");
-const CodePlugin = require("./utils/CodePlugin");
+const CodePlugin = require("../utils/CodePlugin");
 
 module.exports = {
   config: function (entry = []) {
@@ -8,13 +8,13 @@ module.exports = {
   managerEntries: function (entry = []) {
     return [...entry, require.resolve("./manager")]
   },
-  webpackFinal: async function (config, { configType }) {
+  webpackFinal: function (config, { configType }) {
     config.module.rules.push({
       test: /\.jsx?$|\.tsx?$|\.ts$|\.css$/,
       use: [
         {
-          loader: path.resolve(__dirname, "utils/sourceLoader.js"),
-          options: { roots: [path.resolve(__dirname, "../components/")] },
+          loader: path.resolve(__dirname, "../utils/sourceLoader.js"),
+          options: { roots: [path.resolve(__dirname, "../../components/")] },
         },
       ],
     });

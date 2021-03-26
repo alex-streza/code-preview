@@ -6,7 +6,7 @@ module.exports = function sourceLoader(source) {
   const path = this.resourcePath;
   for (const root of roots) {
     if (!root || path.includes(root)) {
-      console.log(`path`, path);
+      console.log(`miau`, path);
       cache.register(
         path.substr(root.length).replace(/^\//, ""),
         source,
