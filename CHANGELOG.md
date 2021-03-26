@@ -1,3 +1,15 @@
+# v0.0.5 (Fri Mar 26 2021)
+
+#### ⚠️ Pushed to `master`
+
+- Update README.md ([@alex-streza](https://github.com/alex-streza))
+
+#### Authors: 1
+
+- [@alex-streza](https://github.com/alex-streza)
+
+---
+
 # v0.0.4 (Fri Mar 26 2021)
 
 #### ⚠️ Pushed to `master`
