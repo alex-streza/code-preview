@@ -8,7 +8,7 @@ module.exports = {
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
-      test: /\.jsx?$|\.tsx?$|\.css$/,
+      test: /\.jsx?$|\.tsx?$|\.ts$|\.css$/,
       use: [
         {
           loader: path.resolve(__dirname, "utils/sourceLoader.js"),
