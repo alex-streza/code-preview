@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-code-preview",
-  "version": "0.0.4-alpha.0",
+  "version": "0.0.4",
   "description": "A storybook addon for previewing component files",
   "keywords": [
     "storybook-addons",
