@@ -5,11 +5,11 @@ module.exports = function sourceLoader(source) {
   const { roots = [], compiled } = opts;
   const path = this.resourcePath;
   for (const root of roots) {
-    if (!root || path.includes(root)) {
+    if (!root || (path.includes(root) && !path.includes("node_modules"))) {
       cache.register(
-        path.substr(root.length).replace(/^\//, ""),
+        path.substr(path.indexOf(root) + root.length),
         source,
-        compiled
+        compiled,
       );
     }
   }
