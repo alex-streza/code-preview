@@ -7,6 +7,8 @@ It uses a custom Webpack config & loader and adds a preview tab for all files lo
 - ⚛️ History of accessed components
 - 📦 Many more to come
 
+![preview](https://user-images.githubusercontent.com/72100849/112695760-4b500380-8e8d-11eb-8637-2e311febba8a.gif)
+
 ## Getting Started
 
 ### Installation
