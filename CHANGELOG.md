@@ -1,3 +1,15 @@
+# v0.0.7 (Mon Apr 19 2021)
+
+#### ⚠️ Pushed to `master`
+
+- use storybook theme for components ([@alex-streza](https://github.com/alex-streza))
+
+#### Authors: 1
+
+- [@alex-streza](https://github.com/alex-streza)
+
+---
+
 # v0.0.6 (Fri Mar 26 2021)
 
 #### ⚠️ Pushed to `master`
