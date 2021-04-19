@@ -19,28 +19,28 @@ const ContainerSelect = styled.div({
   marginRight: "12px",
 });
 
-const Button = styled.button({
-  color: "white",
-  backgroundColor: `${convert(themes.normal).color.primary}`,
-  borderRadius: "60px",
-  border: "none",
-  marginRight: "12px",
-  padding: "8px 12px",
-  fontSize: `${convert(themes.normal).typography.size.s3}px`,
-  fontFamily: `${convert(themes.normal).typography.fonts.base}`,
-  "&:hover": {
-    cursor: "pointer",
-    filter: "brightness(115%)",
-  },
-});
+const Button = styled.button(({theme}) => ({
+    color: "white",
+    backgroundColor: theme.color.primary,
+    borderRadius: "60px",
+    border: "none",
+    marginRight: "12px",
+    padding: "8px 12px",
+    fontSize: `${theme.typography.size.s3}px`,
+    fontFamily: theme.typography.fonts.base,
+    "&:hover": {
+      cursor: "pointer",
+      filter: "brightness(115%)",
+    },
+}));
 
 const reactSelectTheme = (theme) => ({
   ...theme,
   colors: {
     ...theme.colors,
-    primary25: convert(themes.normal).color.primary,
-    primary: convert(themes.normal).color.primary,
-    primary50: convert(themes.normal).color.primary,
+    primary25: "#BBCBCB",
+    primary: "#BBCBCB",
+    primary50: "#BBCBCB",
   },
 });
 
