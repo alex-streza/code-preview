@@ -1,3 +1,15 @@
+# v0.0.8 (Wed Jul 14 2021)
+
+#### ⚠️ Pushed to `master`
+
+- add tree view to preview files ([@alex-streza](https://github.com/alex-streza))
+
+#### Authors: 1
+
+- [@alex-streza](https://github.com/alex-streza)
+
+---
+
 # v0.0.7 (Mon Apr 19 2021)
 
 #### ⚠️ Pushed to `master`
