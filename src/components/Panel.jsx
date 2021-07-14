@@ -1,7 +1,7 @@
 import path from "path";
 import React, { useEffect, useState } from "react";
+import FileTree from "./FileTree";
 import SyntaxHighlighter from "./SyntaxHighlighter";
-import PanelControls from "./PanelControls";
 
 const Panel = (props) => {
   const { channel, rawSources: rawSourcesFromProps } = props;
@@ -10,6 +10,7 @@ const Panel = (props) => {
   const [rawSources, setRawSources] = useState(rawSourcesFromProps);
 
   const handleFileChange = (path, rs) => {
+    console.log(`path, rs`, path, rs);
     if (rs) {
       const actualPath = matchPathToSource(path, rs);
       if (actualPath && actualPath !== filePath) {
@@ -21,7 +22,7 @@ const Panel = (props) => {
       } else {
         console.warn(
           "WARNING! Selected source path not found among rawSources",
-          path
+          path,
         );
       }
     }
@@ -76,13 +77,20 @@ const Panel = (props) => {
 
   const files = Object.keys(rawSources).sort();
   return (
-    <div style={{ padding: "5px" }} className="sourcePanel">
-      <PanelControls
+    <div style={{ padding: "5px", display: "flex" }} className="sourcePanel">
+      {/* <PanelControls
         filePath={filePath}
         fileState={fileState}
         setFileState={setFileState}
         files={files}
         handleFileChange={(i) => handleFileChange(i, rawSources)}
+      /> */}
+      <FileTree
+        files={files}
+        onFileChange={(path) => {
+          console.log(`pathasd`, path);
+          handleFileChange(path, rawSources);
+        }}
       />
       <SyntaxHighlighter
         language={filePath.match(/.css$/) ? "css" : "javascript"}

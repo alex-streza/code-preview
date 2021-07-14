@@ -3,6 +3,11 @@ import React, { Component, Fragment, useCallback } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import createElement from "react-syntax-highlighter/dist/esm/create-element";
+import { styled } from "@storybook/theming";
+
+const HighlighterContainer = styled.div({
+  flex: "1",
+});
 
 const HighlighterInner = (props) => {
   const { code, language = "javascript", onLinkClick } = props;
@@ -16,7 +21,7 @@ const HighlighterInner = (props) => {
         onLinkClick(link);
       }
     },
-    [onLinkClick]
+    [onLinkClick],
   );
 
   return (
@@ -31,7 +36,7 @@ const HighlighterInner = (props) => {
             return rows.map((row, i) => {
               const children = row.children.map(mapChild);
               const link = children.find(
-                (child) => (child.properties || {})["data-link"]
+                (child) => (child.properties || {})["data-link"],
               );
               return createElement({
                 node: {
@@ -61,14 +66,22 @@ const HighlighterInner = (props) => {
 
 class Highlighter extends Component {
   state = { error: null };
+
   componentDidCatch(error) {
     this.setState({ error });
   }
+
   render() {
-    if (this.state.error) {
-      return <pre>{this.props.code}</pre>;
-    }
-    return <HighlighterInner {...this.props} />;
+    return (
+      <HighlighterContainer>
+        {!this.state.error && (
+          <>
+            <pre>{this.props.code}</pre>
+            <HighlighterInner {...this.props} />
+          </>
+        )}
+      </HighlighterContainer>
+    );
   }
 }
 
