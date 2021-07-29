@@ -1,3 +1,15 @@
+# v0.0.9 (Thu Jul 29 2021)
+
+#### ⚠️ Pushed to `master`
+
+- remove unused code ([@alex-streza](https://github.com/alex-streza))
+
+#### Authors: 1
+
+- [@alex-streza](https://github.com/alex-streza)
+
+---
+
 # v0.0.8 (Wed Jul 14 2021)
 
 #### ⚠️ Pushed to `master`
