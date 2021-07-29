@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useCallback } from "react";
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import createElement from "react-syntax-highlighter/dist/esm/create-element";
 import { styled } from "@storybook/theming";
 
@@ -29,8 +29,8 @@ const HighlighterInner = (props) => {
       <style>{`[data-link-row] { cursor: pointer; background-color: rgba(0,0,255,0.05); border-radius: 4px; } [data-link-row]:hover { box-shadow: 0 0 3px blue; } `}</style>
       <div className="source-code" onClick={handleLinkClick}>
         <SyntaxHighlighter
-          style={prism}
-          customStyle={{ backgroundColor: "transparent", fontSize: "1em" }}
+          style={docco}
+          customStyle={{ fontSize: "1em" }}
           language={language}
           renderer={({ rows, stylesheet, useInlineStyles }) => {
             return rows.map((row, i) => {
@@ -57,7 +57,7 @@ const HighlighterInner = (props) => {
             });
           }}
         >
-          {code}asdasdasdasd
+          {code}
         </SyntaxHighlighter>
       </div>
     </Fragment>

@@ -10,7 +10,6 @@ const Panel = (props) => {
   const [rawSources, setRawSources] = useState(rawSourcesFromProps);
 
   const handleFileChange = (path, rs) => {
-    console.log(`path, rs`, path, rs);
     if (rs) {
       const actualPath = matchPathToSource(path, rs);
       if (actualPath && actualPath !== filePath) {
@@ -78,17 +77,10 @@ const Panel = (props) => {
   const files = Object.keys(rawSources).sort();
   return (
     <div style={{ padding: "5px", display: "flex" }} className="sourcePanel">
-      {/* <PanelControls
-        filePath={filePath}
-        fileState={fileState}
-        setFileState={setFileState}
-        files={files}
-        handleFileChange={(i) => handleFileChange(i, rawSources)}
-      /> */}
       <FileTree
         files={files}
+        filePath={filePath}
         onFileChange={(path) => {
-          console.log(`pathasd`, path);
           handleFileChange(path, rawSources);
         }}
       />

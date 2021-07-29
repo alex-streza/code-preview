@@ -18,6 +18,9 @@ addons.register(ADDON_ID, (api) => {
           rawSources = data.files;
           channel.emit("code-preview/rawSources", data.files);
         }
+      })
+      .catch((error) => {
+        console.log(`Raw sources error`, error);
       });
   }
   fetchSources();
