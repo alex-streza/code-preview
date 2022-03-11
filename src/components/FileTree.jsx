@@ -1,5 +1,8 @@
 import { styled } from "@storybook/theming";
+import path from "path";
 import React, { useState } from "react";
+
+const PATH_SEPARATOR = path.sep;
 
 function convertArrayToTree(paths) {
   // Adapted from http://brandonclapp.com/arranging-an-array-of-flat-paths-into-a-json-tree-like-structure/
@@ -126,7 +129,7 @@ const TreeNode = ({ current, activeFile, tree, onFileChange }) => {
 
   const onClickNode = () => {
     if (isLeaf) {
-      onFileChange("\\" + path.join("\\"));
+      onFileChange(`${PATH_SEPARATOR}${path.join(PATH_SEPARATOR)}`);
     } else {
       setExpanded((expanded) => !expanded);
     }
@@ -158,7 +161,9 @@ const TreeNode = ({ current, activeFile, tree, onFileChange }) => {
 };
 
 const FileTree = ({ files, filePath, onFileChange }) => {
-  var fileTree = convertArrayToTree(files.map((p) => p.split("\\").slice(1)));
+  var fileTree = convertArrayToTree(
+    files.map((p) => p.split(PATH_SEPARATOR).slice(1)),
+  );
   return (
     <TreeContainer>
       <h2>Choose file to view</h2>
