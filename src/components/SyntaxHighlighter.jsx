@@ -74,12 +74,7 @@ class Highlighter extends Component {
   render() {
     return (
       <HighlighterContainer>
-        {!this.state.error && (
-          <>
-            <pre>{this.props.code}</pre>
-            <HighlighterInner {...this.props} />
-          </>
-        )}
+        {!this.state.error && <HighlighterInner {...this.props} />}
       </HighlighterContainer>
     );
   }
