@@ -1,6 +1,6 @@
 {
-  "name": "storybook-addon-code-preview",
-  "version": "0.0.9",
+  "name": "storybook-addon-sources-preview",
+  "version": "0.0.12",
   "description": "A storybook addon for previewing component files",
   "keywords": [
     "storybook-addons",
@@ -10,14 +10,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/alex-streza/code-preview"
+    "url": "https://github.com/sergeymakoveev/code-preview"
   },
   "author": {
-    "name": "Alex Streza",
-    "email": "alex.streza@okapistudio.com"
+    "name": "Sergey Makoveev",
+    "email": "sergey@makoveev.info"
   },
   "license": "MIT",
-  "main": "dist/preset.js",
+  "main": "dist/preset/index.js",
   "files": [
     "dist/**/*",
     "README.md",
@@ -30,7 +30,7 @@
     "storybook": "start-storybook -p 6006",
     "start": "concurrently \"npm run clean\" \"npm run storybook -- --no-manager-cache --quiet\" \"npm run build -- --watch\"",
     "build-storybook": "build-storybook",
-    "release": "npm run build && auto shipit"
+    "release": "yarn build && auto shipit"
   },
   "publishConfig": {
     "access": "public"
