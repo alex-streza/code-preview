@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-code-preview",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A storybook addon for previewing component files",
   "keywords": [
     "storybook-addons",
@@ -10,11 +10,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/alex-streza/code-preview"
+    "url": "https://github.com/sergeymakoveev/code-preview"
   },
   "author": {
-    "name": "Alex Streza",
-    "email": "alex.streza@okapistudio.com"
+    "name": "Sergey Makoveev",
+    "email": "sergey@makoveev.info"
   },
   "license": "MIT",
   "main": "dist/preset.js",
