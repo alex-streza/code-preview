@@ -17,7 +17,7 @@
     "email": "sergey@makoveev.info"
   },
   "license": "MIT",
-  "main": "dist/preset.js",
+  "main": "dist/preset/index.js",
   "files": [
     "dist/**/*",
     "README.md",
@@ -30,7 +30,7 @@
     "storybook": "start-storybook -p 6006",
     "start": "concurrently \"npm run clean\" \"npm run storybook -- --no-manager-cache --quiet\" \"npm run build -- --watch\"",
     "build-storybook": "build-storybook",
-    "release": "npm run build && auto shipit"
+    "release": "yarn build && auto shipit"
   },
   "publishConfig": {
     "access": "public"
